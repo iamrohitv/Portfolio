@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/site";
+---
+
+<Base title="Projects - Rohit Verma" description="Projects by Rohit Verma: Skarm, Hexlab, Vetra.">
+  <section class="pb-12 pt-10">
+    <SectionHeading title="Projects" linkLabel={`${projects.length} total`} />
+    <p class="mb-5 text-[14px] text-slate-600">Things I've built while learning full-stack development.</p>
+    <div class="grid gap-3">
+      {projects.map((p) => <ProjectCard project={p} />)}
+    </div>
+  </section>
+</Base>
