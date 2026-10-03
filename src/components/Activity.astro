@@ -9,8 +9,8 @@ import { site } from "../data/site";
 <!-- Desktop: single row like the original -->
 <div id="activity-desktop" class="hidden sm:block" data-handle={site.githubHandle}></div>
 
-<!-- Phone: three equal stacked segments, each with its own months -->
-<div id="activity-mobile" class="flex flex-col gap-4 sm:hidden"></div>
+<!-- Phone: three equal swipeable segments, each with its own months -->
+<div id="activity-mobile" class="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 sm:hidden"></div>
 
 <div class="mt-3 flex items-center gap-1.5 font-mono text-xs text-slate-500">
   <span>less</span>
@@ -135,7 +135,7 @@ import { site } from "../data/site";
         const segWeeks = weeks.slice(offset, offset + count);
         offset += count;
         const seg = document.createElement("div");
-        seg.className = "flex flex-col";
+        seg.className = "flex w-full min-w-full shrink-0 snap-center flex-col";
         seg.appendChild(monthRow(uniqueMonths(segWeeks.flat())));
         const grid = gridEl(count);
         segWeeks.forEach((w) => grid.appendChild(weekDiv(w)));
