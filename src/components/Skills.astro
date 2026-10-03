@@ -1,0 +1,9 @@
+---
+import { skills } from "../data/site";
+---
+
+<div class="flex flex-wrap gap-2">
+  {skills.map((s) => (
+    <span class="rounded-full border border-slate-200 bg-white px-3 py-1 text-[13px] text-slate-700">{s}</span>
+  ))}
+</div>
