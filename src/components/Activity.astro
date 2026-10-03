@@ -28,7 +28,6 @@ import { site } from "../data/site";
   const TOTAL_WEEKS = 53;
   const DAYS = 7;
   const TOTAL_DAYS = TOTAL_WEEKS * DAYS;
-  const SEGMENT_WEEKS = [18, 18, 17];
 
   function mulberry32(seed: number) {
     return function () {
@@ -93,6 +92,20 @@ import { site } from "../data/site";
     return w;
   }
 
+  // Invisible placeholder column: holds grid space so short slides keep
+  // identical box sizes, but never reads as data.
+  function blankWeekDiv(): HTMLDivElement {
+    const w = document.createElement("div");
+    w.className = "flex min-w-0 flex-col gap-[3px]";
+    w.setAttribute("aria-hidden", "true");
+    for (let i = 0; i < DAYS; i++) {
+      const c = document.createElement("div");
+      c.className = `${CELL_BASE} pointer-events-none bg-zinc-100/40`;
+      w.appendChild(c);
+    }
+    return w;
+  }
+
   function monthRow(months: string[]): HTMLDivElement {
     const r = document.createElement("div");
     r.className = "flex w-full justify-between font-mono text-[11px] text-slate-400";
@@ -126,19 +139,28 @@ import { site } from "../data/site";
       desktop.appendChild(grid);
     }
 
-    // Phone: three equal stacked segments, each with its own months
+    // Phone: split the 53 week columns into 3 near-equal slides.
     const mobile = document.getElementById("activity-mobile");
     if (mobile) {
       mobile.replaceChildren();
-      let offset = 0;
-      SEGMENT_WEEKS.forEach((count) => {
-        const segWeeks = weeks.slice(offset, offset + count);
-        offset += count;
+      const perSlide = Math.ceil(TOTAL_WEEKS / 3);
+      const slides: Entry[][][] = [];
+      for (let s = 0; s * perSlide < TOTAL_WEEKS; s++) {
+        slides.push(weeks.slice(s * perSlide, s * perSlide + perSlide));
+      }
+      // Pad short slides with blank columns so every slide has the same
+      // column count and all boxes stay identical in size.
+      const maxCols = Math.max(...slides.map((s) => s.length), 0);
+      slides.forEach((segWeeks) => {
+        if (!segWeeks.length) return;
         const seg = document.createElement("div");
         seg.className = "flex w-full min-w-full shrink-0 snap-center flex-col";
         seg.appendChild(monthRow(uniqueMonths(segWeeks.flat())));
-        const grid = gridEl(count);
+        const grid = gridEl(maxCols);
         segWeeks.forEach((w) => grid.appendChild(weekDiv(w)));
+        for (let p = segWeeks.length; p < maxCols; p++) {
+          grid.appendChild(blankWeekDiv());
+        }
         seg.appendChild(grid);
         mobile.appendChild(seg);
       });
