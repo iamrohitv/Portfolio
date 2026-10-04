@@ -19,3 +19,17 @@ body {
   background: #0f172a;
   color: #fff;
 }
+
+/* Exact copy of the Hexlab scrollbar (iamrohitv/Hexlab src/app/globals.css). */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(112, 112, 112, 0.35);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
