@@ -23,21 +23,19 @@ export type Project = {
   github: string;
   live: string;
   liveLabel: string;
-  badge?: string;
-  featured?: boolean;
+  emoji: string;
 };
 
 export const projects: Project[] = [
   {
     title: "Skarm",
     description:
-      "Production-ready issue tracking platform for modern teams, featuring real-time Kanban boards, AI-powered triage, multi-team workspaces, cycles, and keyboard-first workflows.",
+      "Contributing to Skarm, an open-source issue tracking platform for modern teams with real-time Kanban boards, AI-powered triage, multi-team workspaces, cycles, and keyboard-first workflows.",
     tech: ["TypeScript", "Next.js", "Tailwind CSS", "Prisma"],
     github: "https://github.com/iamrohitv/skarm",
     live: "https://skarm.vercel.app/",
     liveLabel: "skarm.vercel.app",
-    badge: "Major Project",
-    featured: true,
+    emoji: "📋",
   },
   {
     title: "Hexlab",
@@ -47,7 +45,7 @@ export const projects: Project[] = [
     github: "https://github.com/iamrohitv/Hexlab",
     live: "https://hexlab-five.vercel.app",
     liveLabel: "hexlab-five.vercel.app",
-    badge: "Landing Page",
+    emoji: "✨",
   },
   {
     title: "Vetra",
@@ -57,6 +55,7 @@ export const projects: Project[] = [
     github: "https://github.com/iamrohitv/Vetra",
     live: "https://vetra-pink.vercel.app",
     liveLabel: "vetra-pink.vercel.app",
+    emoji: "📈",
   },
 ];
 
