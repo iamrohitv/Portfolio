@@ -19,6 +19,7 @@ const currentPath = Astro.url.pathname;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={`https://github.com/${site.githubHandle}.png`} />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS Feed`} href="/rss.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
