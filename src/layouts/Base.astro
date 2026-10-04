@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="en" class="bg-white text-slate-900">
+<html lang="en" class="bg-white text-ink">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,15 +27,15 @@ const currentPath = Astro.url.pathname;
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen overflow-x-clip bg-white text-slate-900 antialiased">
+  <body class="min-h-screen overflow-x-clip bg-white text-ink antialiased">
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur">
       <nav class="mx-auto flex max-w-2xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-6 py-5 sm:py-8">
-        <a href="/" class="font-mono text-sm text-slate-900 hover:text-slate-500">
+        <a href="/" class="font-mono text-sm text-ink hover:text-slate-500">
           {site.shortName}
         </a>
         <div class="flex items-center gap-3 font-mono text-sm text-slate-500 sm:gap-4">
-          <a href="/projects" class:list={["hover:text-slate-950", currentPath === "/projects" && "text-slate-950"]}>Projects</a>
-          <a href="/about" class:list={["hover:text-slate-950", currentPath === "/about" && "text-slate-950"]}>About</a>
+          <a href="/projects" class:list={["hover:text-ink", currentPath === "/projects" && "text-ink"]}>Projects</a>
+          <a href="/about" class:list={["hover:text-ink", currentPath === "/about" && "text-ink"]}>About</a>
         </div>
       </nav>
     </header>
@@ -48,9 +48,9 @@ const currentPath = Astro.url.pathname;
       <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-slate-100 pt-6 text-[13px] text-slate-500">
         <span>© 2026 {site.name}</span>
         <div class="flex gap-4">
-          <a href={site.github} target="_blank" rel="noreferrer" class="hover:text-slate-900">GitHub</a>
-          <a href={`mailto:${site.email}`} class="hover:text-slate-900">Email</a>
-          <a href="/" class="hover:text-slate-900">Top ↑</a>
+          <a href={site.github} target="_blank" rel="noreferrer" class="hover:text-ink">GitHub</a>
+          <a href={`mailto:${site.email}`} class="hover:text-ink">Email</a>
+          <button id="to-top" type="button" class="cursor-pointer hover:text-ink">Top ↑</button>
         </div>
       </div>
     </footer>
@@ -107,6 +107,10 @@ const currentPath = Astro.url.pathname;
       window.addEventListener("scroll", updateThumb, { passive: true });
       window.addEventListener("resize", updateThumb);
       updateThumb();
+
+      document.getElementById("to-top")?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     </script>
   </body>
 </html>
