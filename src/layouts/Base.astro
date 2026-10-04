@@ -53,5 +53,59 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
     </footer>
+
+    <div
+      id="scrollbar-thumb"
+      aria-hidden="true"
+      class="fixed right-0 top-0 z-[100] hidden w-1 cursor-grab rounded-full active:cursor-grabbing"
+      style="height: 3cm; background: rgba(112, 112, 112, 0.35);"
+    ></div>
+
+    <script>
+      const thumb = document.getElementById("scrollbar-thumb");
+      const root = document.documentElement;
+
+      function maxScroll(): number {
+        return root.scrollHeight - root.clientHeight;
+      }
+
+      function updateThumb(): void {
+        if (!thumb) return;
+        const max = maxScroll();
+        if (max <= 0) {
+          thumb.style.display = "none";
+          return;
+        }
+        const travel = Math.max(0, root.clientHeight - thumb.offsetHeight);
+        const y = (root.scrollTop / max) * travel;
+        thumb.style.display = "block";
+        thumb.style.transform = `translateY(${y}px)`;
+      }
+
+      // Drag the thumb to scroll, like a native scrollbar.
+      let dragging = false;
+      let dragOffset = 0;
+      thumb?.addEventListener("mousedown", (e) => {
+        dragging = true;
+        dragOffset = e.clientY - (thumb as HTMLElement).getBoundingClientRect().top;
+        document.body.style.userSelect = "none";
+        e.preventDefault();
+      });
+      window.addEventListener("mousemove", (e) => {
+        if (!dragging) return;
+        const max = maxScroll();
+        const travel = Math.max(1, root.clientHeight - (thumb as HTMLElement).offsetHeight);
+        const y = Math.min(Math.max(0, e.clientY - dragOffset), travel);
+        root.scrollTop = (y / travel) * max;
+      });
+      window.addEventListener("mouseup", () => {
+        dragging = false;
+        document.body.style.userSelect = "";
+      });
+
+      window.addEventListener("scroll", updateThumb, { passive: true });
+      window.addEventListener("resize", updateThumb);
+      updateThumb();
+    </script>
   </body>
 </html>

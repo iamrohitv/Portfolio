@@ -7,6 +7,14 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+/* Native root scrollbar stays hidden: the fixed 6cm custom thumb
+   in Base.astro takes its place. Inner scrollers keep Hexlab styling. */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 body {
