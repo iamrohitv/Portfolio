@@ -14,10 +14,8 @@ import { site } from "../data/site";
   <div id="activity-viewport" class="overflow-hidden">
     <div id="activity-track" class="flex transition-transform duration-300 ease-out"></div>
   </div>
-  <div class="mt-2 flex items-center justify-between">
-    <button id="activity-prev" type="button" aria-label="Previous months" class="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 font-mono text-sm text-slate-500 transition hover:border-slate-400 hover:text-slate-950">←</button>
+  <div class="mt-2 flex items-center justify-center">
     <div id="activity-dots" class="flex items-center gap-1.5" aria-hidden="true"></div>
-    <button id="activity-next" type="button" aria-label="Next months" class="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 font-mono text-sm text-slate-500 transition hover:border-slate-400 hover:text-slate-950">→</button>
   </div>
 </div>
 
@@ -166,8 +164,6 @@ import { site } from "../data/site";
   function bindCarouselControls(): void {
     if (carouselBound) return;
     carouselBound = true;
-    document.getElementById("activity-prev")?.addEventListener("click", () => goToSlide(carouselIndex - 1));
-    document.getElementById("activity-next")?.addEventListener("click", () => goToSlide(carouselIndex + 1));
     const viewport = document.getElementById("activity-viewport");
     let touchX: number | null = null;
     viewport?.addEventListener("touchstart", (e) => {
