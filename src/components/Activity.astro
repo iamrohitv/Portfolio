@@ -19,7 +19,7 @@ import { site } from "../data/site";
   </div>
 </div>
 
-<div class="mt-3 flex items-center gap-1.5 font-mono text-xs text-slate-500">
+<div class="mt-3 flex items-center gap-1.5 font-serif text-xs text-slate-500">
   <span>less</span>
   <span class="h-2.5 w-2.5 rounded-[2px] bg-zinc-100"></span>
   <span class="h-2.5 w-2.5 rounded-[2px] bg-zinc-300"></span>
@@ -115,7 +115,7 @@ import { site } from "../data/site";
 
   function monthRow(months: string[]): HTMLDivElement {
     const r = document.createElement("div");
-    r.className = "flex w-full justify-between font-mono text-[11px] text-slate-400";
+    r.className = "flex w-full justify-between font-serif text-[11px] text-slate-400";
     r.setAttribute("aria-hidden", "true");
     months.forEach((m) => {
       const s = document.createElement("span");
