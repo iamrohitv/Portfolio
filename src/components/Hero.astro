@@ -24,7 +24,7 @@ const socials = [
       height="112"
       class="h-28 w-28 rounded-full object-cover ring-1 ring-slate-200"
     />
-    <h1 class="text-2xl font-semibold tracking-tight text-slate-950">{site.name}</h1>
+    <h1 class="text-2xl font-semibold tracking-tight text-ink">{site.name}</h1>
     <p class="leading-7 text-slate-600">{site.role}</p>
     <p class="max-w-xl leading-7 text-slate-600">
       {site.bio}
@@ -38,7 +38,7 @@ const socials = [
         rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
         aria-label={s.label}
         title={s.label}
-        class="transition hover:text-slate-950"
+        class="transition hover:text-ink"
       >
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
           <path d={s.path}></path>

@@ -25,12 +25,12 @@ import { site } from "../data/site";
   <span class="h-2.5 w-2.5 rounded-[2px] bg-zinc-300"></span>
   <span class="h-2.5 w-2.5 rounded-[2px] bg-zinc-400"></span>
   <span class="h-2.5 w-2.5 rounded-[2px] bg-zinc-600"></span>
-  <span class="h-2.5 w-2.5 rounded-[2px] bg-zinc-800"></span>
+  <span class="h-2.5 w-2.5 rounded-[2px] bg-ink"></span>
   <span>more</span>
 </div>
 
 <script>
-  const LEVEL_CLASSES = ["bg-zinc-100", "bg-zinc-300", "bg-zinc-400", "bg-zinc-600", "bg-zinc-800"];
+  const LEVEL_CLASSES = ["bg-zinc-100", "bg-zinc-300", "bg-zinc-400", "bg-zinc-600", "bg-ink"];
   const CELL_BASE = "aspect-square w-full rounded-[2px]";
   const TOTAL_WEEKS = 53;
   const DAYS = 7;
@@ -155,7 +155,7 @@ import { site } from "../data/site";
       const d = document.createElement("button");
       d.type = "button";
       d.setAttribute("aria-label", `Go to slide ${i + 1}`);
-      d.className = `h-1.5 w-1.5 rounded-full transition ${i === carouselIndex ? "bg-zinc-800" : "bg-zinc-300"}`;
+      d.className = `h-1.5 w-1.5 rounded-full transition ${i === carouselIndex ? "bg-ink" : "bg-zinc-300"}`;
       d.addEventListener("click", () => goToSlide(i));
       dotsWrap.appendChild(d);
     }
