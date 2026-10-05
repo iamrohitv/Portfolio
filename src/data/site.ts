@@ -23,7 +23,6 @@ export type Project = {
   github: string;
   live: string;
   liveLabel: string;
-  emoji: string;
 };
 
 export const projects: Project[] = [
@@ -35,7 +34,6 @@ export const projects: Project[] = [
     github: "https://github.com/iamrohitv/skarm",
     live: "https://skarm.vercel.app/",
     liveLabel: "skarm.vercel.app",
-    emoji: "📋",
   },
   {
     title: "Hexlab",
@@ -45,7 +43,6 @@ export const projects: Project[] = [
     github: "https://github.com/iamrohitv/Hexlab",
     live: "https://hexlab-five.vercel.app",
     liveLabel: "hexlab-five.vercel.app",
-    emoji: "✨",
   },
   {
     title: "Vetra",
@@ -55,7 +52,6 @@ export const projects: Project[] = [
     github: "https://github.com/iamrohitv/Vetra",
     live: "https://vetra-pink.vercel.app",
     liveLabel: "vetra-pink.vercel.app",
-    emoji: "📈",
   },
 ];
 
